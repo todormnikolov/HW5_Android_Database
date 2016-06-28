@@ -24,13 +24,15 @@
             android:id="@+id/edit_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password" />
+            android:hint="Password"
+            android:inputType="textPassword"/>
 
         <EditText
             android:id="@+id/edit_re_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Confirm password" />
+            android:hint="Confirm password"
+            android:inputType="textPassword"/>
 
     </LinearLayout>
 

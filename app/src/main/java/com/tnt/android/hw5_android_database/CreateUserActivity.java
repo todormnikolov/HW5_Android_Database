@@ -50,7 +50,7 @@ public class CreateUserActivity extends AppCompatActivity {
                     return;
                 }
 
-                //check for equals values in pass and re-pass fields
+                //get value from pass and re-pass fields
                 String password = editPass.getText().toString();
                 String rePassword = editRePass.getText().toString();
 
@@ -87,12 +87,12 @@ public class CreateUserActivity extends AppCompatActivity {
 
             } while (cursor.moveToNext());
 
-            return false;
-        }
 
-        Toast toast = Toast.makeText(getApplicationContext(), "Error reading from db!", Toast.LENGTH_LONG);
-        toast.show();
-        return true;
+        }
+        return false;
+//        Toast toast = Toast.makeText(getApplicationContext(), "Error reading from db!", Toast.LENGTH_LONG);
+//        toast.show();
+//        return true;
     }
 
     private void writeRecord(User user) {
