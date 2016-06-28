@@ -29,9 +29,6 @@ public class CreateUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_user);
 
         dbUtils = DBUtils.getInstance(this);
-        //User newUser = new User("admin", "1234");
-        //writeRecord(newUser);
-
 
         editUsername = (EditText) findViewById(R.id.edit_username);
         editPass = (EditText) findViewById(R.id.edit_pass);
@@ -43,16 +40,22 @@ public class CreateUserActivity extends AppCompatActivity {
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String username = editUsername.getText().toString();
+
                 //Check for username exists in db
-                readDB();
+                if (usernameExists(username)) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "This user already exists in db!", Toast.LENGTH_LONG);
+                    toast.show();
+                    return;
+                }
 
                 //check for equals values in pass and re-pass fields
-                String username = editUsername.getText().toString();
                 String password = editPass.getText().toString();
                 String rePassword = editRePass.getText().toString();
 
-                // /save in db
-                if(password.length() > 2 && password.equals(rePassword)){
+                // save in db
+                if (password.length() > 2 && password.equals(rePassword)) {
                     User user = new User(username, password);
                     writeRecord(user);
 
@@ -72,26 +75,24 @@ public class CreateUserActivity extends AppCompatActivity {
         });
     }
 
-    private void readDB() {
+    private boolean usernameExists(String username) {
         Cursor cursor = dbUtils.readUserRecord();
         if (cursor.moveToFirst()) {
             do {
                 String nodeUsername = cursor.getString(cursor.getColumnIndex(DBHelper.KEY_USERNAME));
 
-//                if (nodeUsername.equals(editUsername.getText().toString())) {
-//                    Toast toast = Toast.makeText(getApplicationContext(), "This user already exists!", Toast.LENGTH_LONG);
-//                    toast.show();
-//                    return;
-//                }
+                if (nodeUsername.equals(username)) {
+                    return true;
+                }
 
-                //String nodePassword = cursor.getString(cursor.getColumnIndex(DBHelper.KEY_PASSWORD));
-
-                //Node node = new Node(nodeName, nodeNum);
-                //nodes.add(node);
-                Log.d("Username", nodeUsername);
-                //Log.d("Password", nodePassword);
             } while (cursor.moveToNext());
+
+            return false;
         }
+
+        Toast toast = Toast.makeText(getApplicationContext(), "Error reading from db!", Toast.LENGTH_LONG);
+        toast.show();
+        return true;
     }
 
     private void writeRecord(User user) {
