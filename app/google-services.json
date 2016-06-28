@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "773051167557",
+    "firebase_url": "https://hw5users.firebaseio.com",
+    "project_id": "hw5users",
+    "storage_bucket": "hw5users.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773051167557:android:ccf0959e3274df3d",
+        "android_client_info": {
+          "package_name": "com.tnt.android.hw5_android_database"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "773051167557-ijd7rgdltvu6jh1v68j2tirsaa5ft0vu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiL8aDegORO7ceSMGD24DtvO0Ph2PEHdU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
