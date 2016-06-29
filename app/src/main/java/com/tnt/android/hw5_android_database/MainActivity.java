@@ -56,14 +56,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 DBUtils dbUtils = DBUtils.getInstance(getApplicationContext());
-                Firebase ref = new Firebase("https://docs-examples.firebaseio.com/android/saving-data/fireblog");
+                Firebase ref = new Firebase("https://hw5users.firebaseio.com/");
 
                 int counter = 0;
 
                 Cursor cursor = dbUtils.readUserRecord();
                 if (cursor.moveToFirst()) {
 
-                    Toast.makeText(getApplicationContext(),"Please wait, app start uploads on Firebase!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Please wait, app starts upload on Firebase!", Toast.LENGTH_SHORT).show();
 
                     do {
                         Firebase firebase = ref.child("users").child(String.valueOf(counter));
